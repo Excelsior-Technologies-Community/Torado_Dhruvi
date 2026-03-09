@@ -6,6 +6,19 @@ import heroImg from "../assets/herohome.jpg";
 import img1 from "../assets/trending1.jpg";
 import img2 from "../assets/trending2.jpg";
 import img3 from "../assets/trending3.jpg";
+
+import aboutimg from "../assets/about1.png";
+
+
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Autoplay } from "swiper/modules";
+
+import services1 from "../assets/service1.jpg";
+import services2 from "../assets/service2.jpg";
+import services3 from "../assets/service3.jpg";
+import services4 from "../assets/service4.jpg";
+import services5 from "../assets/service1.jpg";
+
 const Home = () => {
 
   const [homeDropdown, setHomeDropdown] = useState(false);
@@ -53,7 +66,7 @@ const Home = () => {
     }
   ];
 
-  const handleLogin = async () => {
+   const handleLogin = async () => {
 
     const res = await fetch("http://localhost:5000/api/auth/login", {
       method: "POST",
@@ -117,6 +130,34 @@ const Home = () => {
     window.location.reload();
 
   };
+
+   const servicessection = [
+    {
+      img: services1,
+      title: "Business Tax Reforms",
+      icon: "fa-solid fa-gears"
+    },
+    {
+      img: services2,
+      title: "Process Development",
+      icon: "fa-solid fa-clipboard-list"
+    },
+    {
+      img: services3,
+      title: "Manage Investment",
+      icon: "fa-solid fa-gear"
+    },
+    {
+      img: services4,
+      title: "Financial Strategy",
+      icon: "fa-solid fa-chart-line"
+    },
+    {
+      img: services5,
+      title: "Market Analysis",
+      icon: "fa-solid fa-chart-pie"
+    }
+  ];
 
 
   return (
@@ -394,6 +435,63 @@ const Home = () => {
         </div>
       </div>
 
+      <div className="about-section container-fluid">
+        <div className="container">
+          <div className="row align-items-center">
+
+            <div className="col-lg-6 col-md-12 mb-4">
+              <div className="about-img">
+                <img src={aboutimg} alt="team" className="img-fluid" />
+              </div>
+            </div>
+
+            <div className="col-lg-6 col-md-12">
+
+              <p className="about-small-title">ABOUT TORADO</p>
+
+              <h1 className="about-title">
+                Business Planning Strategy <br /> & Execution
+              </h1>
+
+              <p className="about-text">
+                Pellentesque at posuere tellus. Ut sed dui justo. Phasellus
+                scelerisque turpis arcu ut pulvinar lectus tristique non.
+                Nam laoreet risus vel laoreet laoreet, mauris risus porta velit
+                imperdiet ante nisi in ante.
+              </p>
+
+              <div className="about-points">
+                <p><i className="fa-solid fa-arrow-right"></i> Communicate orthogonal process</p>
+                <p><i className="fa-solid fa-arrow-right"></i> Professionally grow cutting-edge paradigms</p>
+              </div>
+
+              <div className="row mt-4">
+
+                <div className="col-6 text-center">
+                  <div className="circle-progress">
+                    <span>85%</span>
+                  </div>
+                  <h6>Clients Satisfactions</h6>
+                </div>
+
+                <div className="col-6 text-center">
+                  <div className="circle-progress">
+                    <span>95%</span>
+                  </div>
+                  <h6>Business & Finance Consulting</h6>
+                </div>
+
+              </div>
+
+              <button className="btn about-btn mt-4">
+                MORE ABOUT US
+              </button>
+
+            </div>
+
+          </div>
+        </div>
+      </div>
 
       <div className="floating-buttons">
 

@@ -15,9 +15,6 @@
     margin-right: 6px;
 }
 
-
-/* NAVBAR */
-
 .main-navbar {
     background: #fff;
     padding: 15px 0;
@@ -50,8 +47,6 @@
     font-size: 12px;
     margin-left: 4px;
 }
-
-
 
 .dropdown-custom {
     position: relative;
@@ -109,7 +104,6 @@
     font-weight: 600;
 }
 
-
 .consult-btn {
     background: #ff2e63;
     color: #fff;
@@ -137,7 +131,6 @@
         top: 0;
         box-shadow: none;
     }
-
 }
 
 .hero-section {
@@ -147,8 +140,6 @@
     position: relative;
     overflow: hidden;
 }
-
-/* LEFT SIDE */
 
 .hero-left {
     padding: 120px 80px;
@@ -194,7 +185,6 @@
     background: #e61f46;
 }
 
-
 .hero-right {
     position: relative;
 }
@@ -209,7 +199,6 @@
     height: 100%;
     object-fit: cover;
 }
-
 
 .floating-buttons {
     position: fixed;
@@ -345,11 +334,9 @@
         width: 85%;
         padding: 15px;
     }
-
 }
 
 .profile-circle {
-
     width: 40px;
     height: 40px;
     border-radius: 50%;
@@ -364,7 +351,6 @@
 }
 
 .auth-modal {
-
     position: fixed;
     top: 0;
     left: 0;
@@ -379,7 +365,6 @@
 }
 
 .auth-box {
-
     background: white;
     padding: 30px;
     width: 350px;
@@ -486,3 +471,84 @@
 .logout-btn:hover {
     background: #e12e4c;
 }
+
+.about-section{
+padding:80px 0;
+background:#f8f9fa;
+}
+
+.about-img img{
+border-radius:10px;
+width:100%;
+}
+
+.about-small-title{
+color:#ff1e4d;
+font-weight:600;
+letter-spacing:1px;
+margin-bottom:10px;
+}
+
+.about-title{
+font-size:42px;
+font-weight:700;
+color:#0b1c39;
+margin-bottom:20px;
+}
+
+.about-text{
+color:#6c757d;
+line-height:1.7;
+margin-bottom:20px;
+}
+
+.about-points p{
+margin-bottom:10px;
+font-weight:500;
+color:#444;
+}
+
+.circle-progress{
+width:80px;
+height:80px;
+border-radius:50%;
+border:6px solid #ff1e4d;
+display:flex;
+align-items:center;
+justify-content:center;
+font-weight:700;
+margin:auto;
+margin-bottom:10px;
+}
+
+.about-btn{
+background:#ff1e4d;
+color:white;
+padding:12px 30px;
+font-weight:600;
+border:none;
+border-radius:5px;
+}
+
+.about-btn:hover{
+background:#e01743;
+color:white;
+}
+
+
+@media (max-width:992px){
+
+.about-title{
+font-size:32px;
+}
+
+.about-section{
+text-align:center;
+}
+
+.about-points{
+text-align:left;
+}
+
+}
+
