@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../Style.css";
 import logo from "../assets/logo.svg";
 import heroImg from "../assets/herohome.jpg";
@@ -13,6 +13,29 @@ const Home = () => {
   const [pagesDropdown, setPagesDropdown] = useState(false);
   const [teamDropdown, setTeamDropdown] = useState(false);
   const [blogDropdown, setBlogDropdown] = useState(false);
+
+  const [showLogin, setShowLogin] = useState(false);
+  const [showRegister, setShowRegister] = useState(false);
+
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const [user, setUser] = useState(null);
+
+  const [showProfileMenu, setShowProfileMenu] = useState(false);
+
+  useEffect(() => {
+
+    const name = localStorage.getItem("name");
+    const email = localStorage.getItem("email");
+
+    if (name && email) {
+      setUser({ name, email });
+    }
+
+  }, []);
+
 
   const services = [
     {
@@ -29,6 +52,72 @@ const Home = () => {
       img: img3
     }
   ];
+
+  const handleLogin = async () => {
+
+    const res = await fetch("http://localhost:5000/api/auth/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        email,
+        password
+      })
+    });
+
+    const data = await res.json();
+
+    if (data.token) {
+
+      localStorage.setItem("token", data.token);
+      localStorage.setItem("name", data.name);
+      localStorage.setItem("email", data.email);
+
+      setUser(data);
+      setShowLogin(false);
+
+    } else {
+      alert("Login Failed");
+    }
+
+  };
+
+  const handleRegister = async () => {
+
+    const res = await fetch("http://localhost:5000/api/auth/register", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        name,
+        email,
+        password
+      })
+    });
+
+    const data = await res.json();
+
+    alert("Registered Successfully");
+
+    setShowRegister(false);
+    setShowLogin(true);
+
+  };
+
+  const handleLogout = () => {
+
+    localStorage.removeItem("token");
+    localStorage.removeItem("name");
+    localStorage.removeItem("email");
+
+    setUser(null);
+
+    window.location.reload();
+
+  };
+
 
   return (
     <>
@@ -50,6 +139,45 @@ const Home = () => {
             <i className="fab fa-twitter"></i>
             <i className="fab fa-instagram"></i>
             <i className="fab fa-linkedin"></i>
+
+            {user ? (
+
+              <div className="profile-wrapper">
+
+                <div
+                  className="profile-circle ms-2"
+                  onClick={() => setShowProfileMenu(!showProfileMenu)}
+                >
+                  {user.name.charAt(0).toUpperCase()}
+                </div>
+
+                {showProfileMenu && (
+
+                  <div className="profile-dropdown">
+
+                    <div className="profile-info">
+                      <p><strong>{user.name}</strong></p>
+                      <p>{user.email}</p>
+                    </div>
+
+                    <button
+                      className="logout-btn"
+                      onClick={handleLogout}
+                    >
+                      Logout
+                    </button>
+
+                  </div>
+
+                )}
+
+              </div>
+
+            ) : (
+
+              <i className="fa-regular fa-user ms-2"></i>
+
+            )}
           </div>
         </div>
       </div>
@@ -182,7 +310,16 @@ const Home = () => {
                 BOOK A CONSULTATION
               </button>
 
-              
+              {!user && (
+                <button
+                  className="login-btn ms-2"
+                  onClick={() => setShowLogin(true)}
+                >
+                  Login
+                </button>
+              )}
+
+
 
             </div>
 
@@ -276,6 +413,85 @@ const Home = () => {
         </div>
 
       </div>
+
+      {showLogin && (
+
+        <div className="auth-modal">
+
+          <div className="auth-box">
+
+            <h3>Login</h3>
+
+            <input
+              type="email"
+              placeholder="Email"
+              onChange={(e) => setEmail(e.target.value)}
+            />
+
+            <input
+              type="password"
+              placeholder="Password"
+              onChange={(e) => setPassword(e.target.value)}
+            />
+
+            <button onClick={handleLogin}>
+              Login
+            </button>
+
+            <p>
+              Don't have account ?
+
+              <span
+                onClick={() => {
+                  setShowLogin(false);
+                  setShowRegister(true);
+                }}
+              >
+                Register
+              </span>
+
+            </p>
+
+          </div>
+
+        </div>
+
+      )}
+
+
+      {showRegister && (
+
+        <div className="auth-modal">
+
+          <div className="auth-box">
+
+            <h3>Register</h3>
+
+            <input
+              placeholder="Name"
+              onChange={(e) => setName(e.target.value)}
+            />
+
+            <input
+              placeholder="Email"
+              onChange={(e) => setEmail(e.target.value)}
+            />
+
+            <input
+              type="password"
+              placeholder="Password"
+              onChange={(e) => setPassword(e.target.value)}
+            />
+
+            <button onClick={handleRegister}>
+              Register
+            </button>
+
+          </div>
+
+        </div>
+
+      )}
 
     </>
   );
