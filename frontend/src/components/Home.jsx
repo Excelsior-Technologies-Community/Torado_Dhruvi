@@ -2,6 +2,10 @@ import React, { useState } from "react";
 import "../Style.css";
 import logo from "../assets/logo.svg";
 import heroImg from "../assets/herohome.jpg";
+
+import img1 from "../assets/trending1.jpg";
+import img2 from "../assets/trending2.jpg";
+import img3 from "../assets/trending3.jpg";
 const Home = () => {
 
   const [homeDropdown, setHomeDropdown] = useState(false);
@@ -9,6 +13,22 @@ const Home = () => {
   const [pagesDropdown, setPagesDropdown] = useState(false);
   const [teamDropdown, setTeamDropdown] = useState(false);
   const [blogDropdown, setBlogDropdown] = useState(false);
+
+  const services = [
+    {
+      title: "Financial Analysis",
+      img: img1,
+      read: true
+    },
+    {
+      title: "Taxation Planning",
+      img: img2
+    },
+    {
+      title: "Investment Trading",
+      img: img3
+    }
+  ];
 
   return (
     <>
@@ -162,6 +182,8 @@ const Home = () => {
                 BOOK A CONSULTATION
               </button>
 
+              
+
             </div>
 
           </div>
@@ -208,6 +230,32 @@ const Home = () => {
         </div>
 
       </section>
+
+      <div className="container service-section">
+        <div className="row">
+
+          {services.map((item, index) => (
+            <div className="col-lg-4 col-md-6 col-12 mb-4" key={index}>
+              <div className="card-box">
+
+                <img src={item.img} alt="" className="card-img" />
+
+                <div className="card-content">
+                  <h4>{item.title}</h4>
+                  <span className="read-more">READ MORE →</span>
+                </div>
+
+              </div>
+            </div>
+          ))}
+
+        </div>
+
+        <div className="info-box">
+          TORADO started its march with providing assistants in
+          <span className="year"> 1999</span>. Initially they provide financial assistance within the country.
+        </div>
+      </div>
 
 
       <div className="floating-buttons">
