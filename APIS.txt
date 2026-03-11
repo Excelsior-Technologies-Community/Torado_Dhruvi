@@ -1,0 +1,29 @@
+http://localhost:5000/api/contact --- POST
+
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5YWU2YjE2ZDQwMWM1NmI0YzlkNWM0OSIsImlhdCI6MTc3MzEyNjk0OCwiZXhwIjoxNzczMjEzMzQ4fQ.Q4www6wclgDuSFfoV1J0h31BKWqMipoieA-WWrYqK8g
+
+Go to the Authorization tab.
+Under the "Type" dropdown, select Bearer Token.
+Paste the token you copied from Step 1 into the "Token" field.
+Go to the Body tab.
+Select raw and choose JSON from the dropdown.
+Enter the contact form details exactly matching your database schema:
+
+
+{
+  "name": "Dhruvi Mathukiya",
+  "email": "mathukiyag@gmail.com",
+  "subject": "No",
+  "phone": "09898196102",
+  "message": "No",
+  "userId": {
+    "$oid": "69ae60e0d401c56b4c9d5c41"
+  },
+  "createdAt": {
+    "$date": "2026-03-10T07:08:25.967Z"
+  },
+  "updatedAt": {
+    "$date": "2026-03-10T07:08:25.967Z"
+  },
+  "__v": 0
+}

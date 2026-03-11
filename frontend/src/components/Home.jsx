@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 import "../Style.css";
 import logo from "../assets/logo.svg";
 import heroImg from "../assets/herohome.jpg";
@@ -158,6 +160,27 @@ const Home = () => {
       icon: "fa-solid fa-chart-pie"
     }
   ];
+
+  const navigate = useNavigate();
+
+const handleHelpClick = async () => {
+
+  try {
+
+    const res = await axios.get("http://localhost:5000/api/help");
+
+    if(res.data.success){
+        navigate("/contact");
+    }
+
+  } catch (error) {
+
+    console.log("API ERROR", error);
+
+  }
+
+};
+
 
 
   return (
@@ -390,9 +413,10 @@ const Home = () => {
                 dapibus leo della pierrano set amuse.
               </p>
 
-              <button className="hero-btn">
-                HOW CAN WE HELP
-              </button>
+              <button className="hero-btn" onClick={handleHelpClick}>
+<i className="fa-solid fa-circle-question me-2"></i>
+HOW CAN WE HELP
+</button>
 
             </div>
 
@@ -532,7 +556,7 @@ const Home = () => {
               onChange={(e) => setPassword(e.target.value)}
             />
 
-            <button onClick={handleLogin}>
+            <button onClick={handleLogin} className="login-btn">
               Login
             </button>
 
@@ -581,7 +605,7 @@ const Home = () => {
               onChange={(e) => setPassword(e.target.value)}
             />
 
-            <button onClick={handleRegister}>
+            <button onClick={handleRegister} className="login-btn">
               Register
             </button>
 

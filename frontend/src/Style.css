@@ -472,83 +472,238 @@
     background: #e12e4c;
 }
 
-.about-section{
-padding:80px 0;
-background:#f8f9fa;
+.about-section {
+    padding: 80px 0;
+    background: #f8f9fa;
 }
 
-.about-img img{
-border-radius:10px;
+.about-img img {
+    border-radius: 10px;
+    width: 100%;
+}
+
+.about-small-title {
+    color: #ff1e4d;
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+}
+
+.about-title {
+    font-size: 42px;
+    font-weight: 700;
+    color: #0b1c39;
+    margin-bottom: 20px;
+}
+
+.about-text {
+    color: #6c757d;
+    line-height: 1.7;
+    margin-bottom: 20px;
+}
+
+.about-points p {
+    margin-bottom: 10px;
+    font-weight: 500;
+    color: #444;
+}
+
+.circle-progress {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 6px solid #ff1e4d;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    margin: auto;
+    margin-bottom: 10px;
+}
+
+.about-btn {
+    background: #ff1e4d;
+    color: white;
+    padding: 12px 30px;
+    font-weight: 600;
+    border: none;
+    border-radius: 5px;
+}
+
+.about-btn:hover {
+    background: #e01743;
+    color: white;
+}
+
+
+@media (max-width:992px) {
+
+    .about-title {
+        font-size: 32px;
+    }
+
+    .about-section {
+        text-align: center;
+    }
+
+    .about-points {
+        text-align: left;
+    }
+
+}
+
+.torado-contact-wrapper{
+background:#f5f5f5;
+padding-bottom:80px;
+}
+
+.torado-contact-header{
+background:#0c1f3f;
+color:white;
+padding:60px 20px;
+text-align:center;
+font-size:40px;
+font-weight:700;
+}
+
+.torado-map-section{
 width:100%;
+height:400px;
 }
 
-.about-small-title{
-color:#ff1e4d;
-font-weight:600;
-letter-spacing:1px;
-margin-bottom:10px;
+.torado-map{
+width:100%;
+height:100%;
+border:0;
 }
 
-.about-title{
-font-size:42px;
-font-weight:700;
-color:#0b1c39;
+.torado-contact-cards{
+margin-top:-80px;
+}
+
+.torado-contact-card{
+background:#0c1f3f;
+color:white;
+padding:40px;
+text-align:center;
+border-radius:12px;
+transition:0.3s;
 margin-bottom:20px;
 }
 
-.about-text{
-color:#6c757d;
-line-height:1.7;
-margin-bottom:20px;
+.torado-contact-card:hover{
+transform:translateY(-10px);
 }
 
-.about-points p{
-margin-bottom:10px;
-font-weight:500;
-color:#444;
+.torado-contact-icon{
+font-size:35px;
+color:#ff2c6a;
+margin-bottom:15px;
 }
 
-.circle-progress{
-width:80px;
-height:80px;
-border-radius:50%;
-border:6px solid #ff1e4d;
-display:flex;
-align-items:center;
-justify-content:center;
-font-weight:700;
-margin:auto;
-margin-bottom:10px;
+@media(max-width:768px){
+
+.torado-contact-header{
+font-size:28px;
 }
 
-.about-btn{
-background:#ff1e4d;
+.torado-map-section{
+height:300px;
+}
+
+}
+ .contact-hero{
+background:#0b2343;
 color:white;
-padding:12px 30px;
-font-weight:600;
-border:none;
-border-radius:5px;
-}
-
-.about-btn:hover{
-background:#e01743;
-color:white;
-}
-
-
-@media (max-width:992px){
-
-.about-title{
-font-size:32px;
-}
-
-.about-section{
+padding:80px 0;
 text-align:center;
 }
 
-.about-points{
-text-align:left;
+.contact-title{
+font-size:48px;
+font-weight:700;
+margin-bottom:10px;
 }
+
+.torado-breadcrumb{
+font-size:16px;
+height:150px;
+background: #0b1c39;
+text-align: center;
+font-size: 40px;
+}
+
+.breadcrumb-home{
+color:white;
+text-decoration:none;
+}
+
+.breadcrumb-home:hover{
+color:#ff2c6a;
+}
+
+.breadcrumb-separator{
+margin:0 6px;
+color: #fff;
+}
+
+.breadcrumb-current{
+color:#ff2c6a;
+font-weight:600;
+}
+.torado-contact-form-section{
+
+padding:80px 0;
 
 }
 
+.torado-input{
+
+width:100%;
+padding:16px;
+border:none;
+background:#f4f4f4;
+border-radius:8px;
+font-size:15px;
+
+}
+
+.torado-textarea{
+
+width:100%;
+padding:16px;
+border:none;
+background:#f4f4f4;
+border-radius:8px;
+resize:none;
+
+}
+
+.torado-send-btn{
+
+background:#ff1744;
+color:white;
+padding:16px 40px;
+border:none;
+border-radius:6px;
+font-weight:600;
+margin-top:10px;
+transition:0.3s;
+
+}
+
+.torado-send-btn:hover{
+
+background:#d50032;
+
+}
+
+@media (max-width:768px){
+
+.torado-contact-form-section{
+
+padding:40px 20px;
+
+}
+
+}
