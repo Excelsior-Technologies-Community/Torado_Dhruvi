@@ -1,0 +1,145 @@
+.torado-footer-section {
+    background: #0d1b2a;
+    color: #cfd6e4;
+    padding: 70px 0 20px;
+    font-family: sans-serif;
+}
+
+.torado-footer-logo-box {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.torado-footer-logo {
+    width: 200px;
+    height: 60px;
+}
+
+.torado-footer-desc {
+    max-width: 450px;
+    line-height: 1.7;
+}
+
+.torado-footer-subscribe h5 {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.torado-footer-input-box {
+    display: flex;
+}
+
+.torado-footer-input-box input {
+    flex: 1;
+    padding: 14px;
+    border: none;
+    background: #14263d;
+    color: white;
+}
+
+.torado-footer-input-box button {
+    background: #ff1744;
+    border: none;
+    padding: 14px 24px;
+    color: white;
+    font-weight: 600;
+}
+
+.torado-footer-middle {
+    margin-top: 60px;
+}
+
+.torado-footer-title {
+    font-size: 18px;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.torado-working-box {
+    background: #14263d;
+    padding: 20px;
+    border-radius: 6px;
+}
+
+.torado-working-box ul {
+    padding-left: 18px;
+}
+
+.torado-footer-links {
+    list-style: none;
+    padding: 0;
+}
+
+.torado-footer-links li {
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.torado-footer-links i {
+    margin-right: 8px;
+    color: #ff1744;
+}
+
+.torado-post {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.torado-post img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.torado-post span {
+    color: #ff1744;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.torado-post p {
+    margin: 4px 0 0;
+    font-size: 14px;
+}
+
+.torado-footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    margin-top: 40px;
+    padding-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.torado-footer-bottom span {
+    color: #ff1744;
+}
+
+.torado-footer-policy a {
+    margin-left: 20px;
+    color: #cfd6e4;
+    text-decoration: none;
+}
+
+
+@media(max-width:768px) {
+
+    .torado-footer-input-box {
+        flex-direction: column;
+    }
+
+    .torado-footer-input-box button {
+        margin-top: 10px;
+    }
+
+    .torado-footer-bottom {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+
+}

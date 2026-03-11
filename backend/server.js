@@ -7,6 +7,7 @@ const authRoutes = require("./routes/authRoutes");
 const protectedRoutes = require("./routes/protectedRoutes");
 const helpRoutes = require("./routes/helpRoutes");
 const contactRoutes = require("./routes/contactRoutes");
+const serviceRoutes = require("./routes/serviceRoutes");
 
 const app = express();
 
@@ -26,6 +27,8 @@ app.use("/api/auth", authRoutes);
 app.use("/api", protectedRoutes);
 
 app.use("/api", contactRoutes);
+app.use("/api/services", serviceRoutes);
+
 
 app.listen(5000, () => {
   console.log("Server running on port 5000");

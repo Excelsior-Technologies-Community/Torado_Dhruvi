@@ -27,3 +27,7 @@ Enter the contact form details exactly matching your database schema:
   },
   "__v": 0
 }
+
+
+
+http://localhost:5000/api/services --- GET

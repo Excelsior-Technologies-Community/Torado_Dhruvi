@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import "../Style.css";
 import logo from "../assets/logo.svg";
@@ -40,6 +41,8 @@ const Home = () => {
 
   const [showProfileMenu, setShowProfileMenu] = useState(false);
 
+  const [firstService, setFirstService] = useState(null);
+
   useEffect(() => {
 
     const name = localStorage.getItem("name");
@@ -68,7 +71,7 @@ const Home = () => {
     }
   ];
 
-   const handleLogin = async () => {
+  const handleLogin = async () => {
 
     const res = await fetch("http://localhost:5000/api/auth/login", {
       method: "POST",
@@ -133,7 +136,7 @@ const Home = () => {
 
   };
 
-   const servicessection = [
+  const servicessection = [
     {
       img: services1,
       title: "Business Tax Reforms",
@@ -163,23 +166,40 @@ const Home = () => {
 
   const navigate = useNavigate();
 
-const handleHelpClick = async () => {
+  const handleHelpClick = async () => {
 
-  try {
+    try {
 
-    const res = await axios.get("http://localhost:5000/api/help");
+      const res = await axios.get("http://localhost:5000/api/help");
 
-    if(res.data.success){
+      if (res.data.success) {
         navigate("/contact");
+      }
+
+    } catch (error) {
+
+      console.log("API ERROR", error);
+
     }
 
-  } catch (error) {
+  };
 
-    console.log("API ERROR", error);
+  const [servicesData, setServicesData] = useState([]);
 
-  }
+  useEffect(() => {
 
-};
+    axios.get("http://localhost:5000/api/services")
+      .then(res => {
+
+        setServicesData(res.data);
+
+        if (res.data.length > 0) {
+          setFirstService(res.data[0]._id);
+        }
+
+      });
+
+  }, []);
 
 
 
@@ -295,8 +315,10 @@ const handleHelpClick = async () => {
 
                 {servicesDropdown && (
                   <div className="dropdown-menu-custom">
-                    <a href="#">Service One</a>
-                    <a href="#">Service Two</a>
+                    <a href="#">Services</a>
+                    <Link to={`/service/${firstService}`}>
+                      Service Details
+                    </Link>
                   </div>
                 )}
               </li>
@@ -313,7 +335,13 @@ const handleHelpClick = async () => {
                 {pagesDropdown && (
                   <div className="dropdown-menu-custom">
                     <a href="#">About</a>
-                    <a href="#">Pricing</a>
+                    <a href="#">Pricing Plan</a>
+                    <a href="#">FAQs</a>
+                    <a href="#">Testimonials</a>
+                    <a href="#">Portfolio</a>
+                    <a href="#">Privacy & Policy</a>
+                    <a href="#">Terms & Conditions</a>
+                    <a href="#">404 Error Page</a>
                   </div>
                 )}
               </li>
@@ -329,8 +357,8 @@ const handleHelpClick = async () => {
 
                 {teamDropdown && (
                   <div className="dropdown-menu-custom">
-                    <a href="#">Team One</a>
-                    <a href="#">Team Two</a>
+                    <a href="#">Our Team</a>
+                    <a href="#">Team Details</a>
                   </div>
                 )}
               </li>
@@ -414,9 +442,9 @@ const handleHelpClick = async () => {
               </p>
 
               <button className="hero-btn" onClick={handleHelpClick}>
-<i className="fa-solid fa-circle-question me-2"></i>
-HOW CAN WE HELP
-</button>
+                <i className="fa-solid fa-circle-question me-2"></i>
+                HOW CAN WE HELP
+              </button>
 
             </div>
 
@@ -436,16 +464,22 @@ HOW CAN WE HELP
       <div className="container service-section">
         <div className="row">
 
-          {services.map((item, index) => (
+          {servicesData.map((item, index) => (
             <div className="col-lg-4 col-md-6 col-12 mb-4" key={index}>
               <div className="card-box">
 
-                <img src={item.img} alt="" className="card-img" />
+                <img src={item.image} alt="" className="card-img" />
 
                 <div className="card-content">
                   <h4>{item.title}</h4>
-                  <span className="read-more">READ MORE →</span>
+                  <span
+                    className="read-more"
+                    onClick={() => navigate(`/service/${item._id}`)}
+                  >
+                    READ MORE →
+                  </span>
                 </div>
+
 
               </div>
             </div>
