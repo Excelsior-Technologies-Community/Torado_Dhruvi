@@ -201,6 +201,23 @@ const Home = () => {
 
   }, []);
 
+  const handleAboutClick = async () => {
+
+    try {
+
+      const res = await axios.get("http://localhost:5000/api/about");
+
+      if (res.data) {
+        navigate("/about");
+      }
+
+    } catch (error) {
+      console.log("API Error", error);
+    }
+
+  };
+
+
 
 
   return (
@@ -498,7 +515,7 @@ const Home = () => {
           <div className="row align-items-center">
 
             <div className="col-lg-6 col-md-12 mb-4">
-              <div className="about-img">
+              <div className="about-img1">
                 <img src={aboutimg} alt="team" className="img-fluid" />
               </div>
             </div>
@@ -541,13 +558,14 @@ const Home = () => {
 
               </div>
 
-              <button className="btn about-btn mt-4">
+              <button className="btn about-btn mt-4" onClick={handleAboutClick}>
                 MORE ABOUT US
               </button>
 
             </div>
 
           </div>
+
         </div>
       </div>
 

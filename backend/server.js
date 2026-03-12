@@ -1,4 +1,3 @@
-
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
@@ -8,6 +7,7 @@ const protectedRoutes = require("./routes/protectedRoutes");
 const helpRoutes = require("./routes/helpRoutes");
 const contactRoutes = require("./routes/contactRoutes");
 const serviceRoutes = require("./routes/serviceRoutes");
+const aboutRoutes = require("./routes/aboutRoutes");
 
 const app = express();
 
@@ -28,6 +28,8 @@ app.use("/api", protectedRoutes);
 
 app.use("/api", contactRoutes);
 app.use("/api/services", serviceRoutes);
+app.use("/api", aboutRoutes);
+
 
 
 app.listen(5000, () => {
