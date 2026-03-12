@@ -11,10 +11,15 @@ const aboutRoutes = require("./routes/aboutRoutes");
 
 const app = express();
 
-
 app.use(cors());
 app.use(express.json());
 
+const path = require("path");
+
+app.use(
+  "/images",
+  express.static(path.join(__dirname, "../frontend/src/assets"))
+);
 
 app.use("/api", helpRoutes);
 
@@ -29,8 +34,6 @@ app.use("/api", protectedRoutes);
 app.use("/api", contactRoutes);
 app.use("/api/services", serviceRoutes);
 app.use("/api", aboutRoutes);
-
-
 
 app.listen(5000, () => {
   console.log("Server running on port 5000");

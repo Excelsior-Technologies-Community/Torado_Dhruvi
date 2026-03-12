@@ -978,3 +978,144 @@
     }
 
 }
+
+.torado-provide-section {
+    padding: 90px 0;
+    background: #f7f7f7;
+    text-align: center;
+}
+
+.torado-provide-title {
+    font-size: 42px;
+    font-weight: 700;
+    margin-bottom: 60px;
+}
+
+.torado-slider-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.torado-slider-container {
+    overflow: hidden;
+    width: 100%;
+}
+
+.torado-slider-track {
+    display: flex;
+    transition: transform 0.5s ease;
+}
+
+.torado-service-card {
+    flex: 0 0 33.33%;
+    max-width: 33.33%;
+    padding: 15px;
+    box-sizing: border-box;
+}
+
+.torado-service-img img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.torado-prev-btn,
+.torado-next-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    border: none;
+    background: #eee;
+    cursor: pointer;
+}
+
+.torado-prev-btn {
+    left: -60px;
+}
+
+.torado-next-btn {
+    right: -60px;
+}
+
+.torado-service-card {
+    transition: all 0.3s ease;
+}
+
+.torado-service-content {
+    background-color: #ffffff;
+    padding: 50px 30px 30px;
+    position: relative;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.torado-service-icon {
+    width: 70px;
+    height: 70px;
+    background-color: #ffffff;
+    border: 2px solid #ff1e4d;
+    border-radius: 50%;
+    color: #ff1e4d;
+    font-size: 24px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: -35px;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: all 0.3s ease;
+    z-index: 10;
+}
+
+.torado-service-content h4 {
+    font-size: 22px;
+    font-weight: 700;
+    color: #0b1d36;
+    margin-bottom: 15px;
+    transition: color 0.3s ease;
+}
+
+.torado-service-content p {
+    color: #666;
+    font-size: 15px;
+    line-height: 1.6;
+    margin-bottom: 25px;
+    transition: color 0.3s ease;
+}
+
+.torado-read-btn {
+    color: #ff1e4d;
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-block;
+    transition: color 0.3s ease;
+}
+
+.torado-service-card:hover .torado-service-content {
+    background-color: #0b1d36;
+    background-image: radial-gradient(circle at bottom right, rgba(255, 30, 77, 0.15) 0%, rgba(11, 29, 54, 0) 50%);
+}
+
+.torado-service-card:hover .torado-service-icon {
+    background-color: #ff1e4d;
+    color: #ffffff;
+    border-color: #ff1e4d;
+}
+
+.torado-service-card:hover .torado-service-content h4,
+.torado-service-card:hover .torado-service-content p,
+.torado-service-card:hover .torado-read-btn {
+    color: #ffffff;
+}
+
+.torado-service-card:hover .torado-read-btn {
+    opacity: 0.9;
+}

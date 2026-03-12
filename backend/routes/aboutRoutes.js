@@ -1,13 +1,7 @@
 const express = require("express");
 const router = express.Router();
+const { getAboutData } = require("../controllers/aboutController");
 
-router.get("/about",(req,res)=>{
-    res.json({
-        title:"Business Planning Strategy & Execution",
-        description:"About company data",
-        clientSatisfaction:85,
-        financeConsulting:95
-    });
-});
+router.get("/about", getAboutData);
 
 module.exports = router;
