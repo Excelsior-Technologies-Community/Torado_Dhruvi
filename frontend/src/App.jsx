@@ -3,7 +3,7 @@ import Home from "./components/Home";
 import Contact from "./pages/Contact";
 import ServiceDetails from "./pages/ServiceDetails";
 import About from "./pages/About";
-
+import Portfolio from "./pages/Portfolio";
 import Footer from "./pages/Footer"
 
 function App() {
@@ -16,6 +16,8 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/service/:id" element={<ServiceDetails />} />
         <Route path="/about" element={<About/>}/>
+        <Route path="/portfolio" element={<Portfolio/>}/>
+
 
 
         

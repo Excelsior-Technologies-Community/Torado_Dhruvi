@@ -8,6 +8,7 @@ const helpRoutes = require("./routes/helpRoutes");
 const contactRoutes = require("./routes/contactRoutes");
 const serviceRoutes = require("./routes/serviceRoutes");
 const aboutRoutes = require("./routes/aboutRoutes");
+const portfolioRoutes = require("./routes/portfolioRoutes");
 
 const app = express();
 
@@ -34,6 +35,7 @@ app.use("/api", protectedRoutes);
 app.use("/api", contactRoutes);
 app.use("/api/services", serviceRoutes);
 app.use("/api", aboutRoutes);
+app.use("/api", portfolioRoutes);
 
 app.listen(5000, () => {
   console.log("Server running on port 5000");

@@ -249,7 +249,10 @@ function About() {
 
                         </div>
 
-                        <button className="port11-btn">
+                        <button
+                            className="port11-btn"
+                            onClick={() => navigate("/portfolio")}
+                        >
                             VIEW ALL PROJECT
                         </button>
 

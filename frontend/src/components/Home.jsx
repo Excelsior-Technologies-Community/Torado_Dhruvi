@@ -29,6 +29,7 @@ const Home = () => {
   const [pagesDropdown, setPagesDropdown] = useState(false);
   const [teamDropdown, setTeamDropdown] = useState(false);
   const [blogDropdown, setBlogDropdown] = useState(false);
+  const [portfolioDropdown, setPortfolioDropdown] = useState(false);
 
   const [showLogin, setShowLogin] = useState(false);
   const [showRegister, setShowRegister] = useState(false);
@@ -217,6 +218,10 @@ const Home = () => {
 
   };
 
+  const handlePortfolioClick = () => {
+    navigate("/portfolio");
+  };
+
 
 
 
@@ -351,11 +356,28 @@ const Home = () => {
 
                 {pagesDropdown && (
                   <div className="dropdown-menu-custom">
-                    <a href="#">About</a>
+                    <a href="#">About Us</a>
                     <a href="#">Pricing Plan</a>
                     <a href="#">FAQs</a>
                     <a href="#">Testimonials</a>
-                    <a href="#">Portfolio</a>
+
+                    <div className="dropdown-submenu">
+                      <div
+                        className="dropdown-submenu-btn"
+                        onClick={(e) => { e.stopPropagation(); setPortfolioDropdown(!portfolioDropdown); }}
+                      >
+                        <span style={{ color: portfolioDropdown ? '#ff2e63' : 'inherit' }} onClick={handlePortfolioClick}>Portfolio</span>
+                        <i className="fas fa-plus" style={{ color: portfolioDropdown ? '#ff2e63' : 'inherit' }}></i>
+                      </div>
+
+                      {portfolioDropdown && (
+                        <div className="sub-menu">
+                          <a style={{ color: '#ff2e63' }} onClick={handlePortfolioClick}>Our Portfolio</a>
+                          <a href="#">Portfolio Details</a>
+                        </div>
+                      )}
+                    </div>
+
                     <a href="#">Privacy & Policy</a>
                     <a href="#">Terms & Conditions</a>
                     <a href="#">404 Error Page</a>
