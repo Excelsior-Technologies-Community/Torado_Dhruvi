@@ -379,7 +379,7 @@ const Home = () => {
                         <div className="sub-menu">
                           <a style={{ color: '#ff2e63' }} onClick={handlePortfolioClick}>Our Portfolio</a>
                           <a onClick={() => navigate(`/portfolio-details/${someId}`)}>
-  Portfolio Details
+              Portfolio Details
 </a>
                         </div>
                       )}

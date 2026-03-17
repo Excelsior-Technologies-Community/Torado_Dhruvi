@@ -15,6 +15,7 @@ function About() {
     const [about, setAbout] = useState({});
     const [currentIndex, setCurrentIndex] = useState(0);
     const [firstService, setFirstService] = useState(null);
+    const [testimonialIndex, setTestimonialIndex] = useState(0);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -66,6 +67,19 @@ function About() {
         { img: img4, title: "Market Strategy", cat: "Business & Finance" }
     ];
 
+    const nextTestimonial = () => {
+        if (!about.testimonials) return;
+
+        if (testimonialIndex < about.testimonials.length - 2) {
+            setTestimonialIndex(testimonialIndex + 1);
+        }
+    };
+
+    const prevTestimonial = () => {
+        if (testimonialIndex > 0) {
+            setTestimonialIndex(testimonialIndex - 1);
+        }
+    };
 
     return (
         <>
@@ -380,6 +394,138 @@ function About() {
                         </div>
 
                     </div>
+
+                </div>
+
+            </section>
+
+            <section className="testimonial-section">
+
+                <div className="container">
+
+                    <div className="testimonial-header">
+
+                        <p className="testimonial-subtitle">TESTIMONIAL</p>
+
+                        <h2 className="testimonial-title">
+                            What User Say About <br /> Our Torado
+                        </h2>
+
+                        <div className="testimonial-nav">
+                            <button onClick={prevTestimonial}>
+                                <i className="fa-solid fa-arrow-left"></i>
+                            </button>
+                            <button onClick={nextTestimonial}>
+                                <i className="fa-solid fa-arrow-right"></i>
+                            </button>
+                        </div>
+
+                    </div>
+
+                    <div className="testimonial-slider">
+
+                        <div
+                            className="testimonial-track"
+                            style={{
+                                transform: `translateX(-${testimonialIndex * 50}%)`
+                            }}
+                        >
+
+                            {about.testimonials?.map((item, index) => (
+
+                                <div className="testimonial-card" key={index}>
+
+                                    <div className="testimonial-top">
+
+                                        <img src={item.image} alt="" />
+                                        <div>
+                                            <h5>{item.name}</h5>
+                                            <p>{item.role}</p>
+                                        </div>
+
+                                    </div>
+
+                                    <p className="testimonial-text">
+                                        {item.message}
+                                    </p>
+
+                                    <div className="testimonial-stars">
+                                        {[...Array(item.rating)].map((_, i) => (
+                                            <i key={i} className="fa-solid fa-star"></i>
+                                        ))}
+                                    </div>
+
+                                </div>
+
+                            ))}
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+            <section className="team-section">
+
+                <div className="container-fluid">
+
+                    <p className="team-subtitle">OUR TEAM</p>
+
+                    <h2 className="team-title">Meet Our Team Member</h2>
+
+                    <div className="row">
+
+                        {about.team?.map((member, index) => (
+
+                            <div className="col-lg-3 col-md-6 col-12 mb-4" key={index}>
+
+                                <div className="team-card">
+
+                                    <div className="team-img">
+                                        <img src={member.image} alt="" />
+                                    </div>
+
+                                    <div className="team-content">
+
+                                        <h5>{member.name}</h5>
+                                        <p>{member.role}</p>
+
+                                        <div className="team-social">
+
+                                            <a href={member.facebook}>
+                                                <i className="fa-brands fa-facebook-f"></i>
+                                            </a>
+
+                                            <a href={member.twitter}>
+                                                <i className="fa-brands fa-twitter"></i>
+                                            </a>
+
+                                            <a href={member.instagram}>
+                                                <i className="fa-brands fa-instagram"></i>
+                                            </a>
+
+                                            <a href={member.linkedin}>
+                                                <i className="fa-brands fa-linkedin-in"></i>
+                                            </a>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        ))}
+
+                    </div>
+
+                    <p className="team-bottom-text">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                        <span> View All Team Member →</span>
+                    </p>
 
                 </div>
 

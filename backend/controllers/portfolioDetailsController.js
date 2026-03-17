@@ -7,11 +7,11 @@ exports.getPortfolioDetails = async (req, res) => {
         const data = await Portfolio.findById(req.params.id);
 
         if (!data) {
-            console.log("❌ NOT FOUND IN DB");
+            console.log(" NOT FOUND IN DB");
             return res.status(404).json({ message: "Portfolio not found" });
         }
 
-        console.log("✅ FOUND:", data);
+        console.log(" FOUND:", data);
 
         res.json(data);
 
