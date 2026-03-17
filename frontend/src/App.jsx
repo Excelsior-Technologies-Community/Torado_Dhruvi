@@ -5,26 +5,28 @@ import ServiceDetails from "./pages/ServiceDetails";
 import About from "./pages/About";
 import Portfolio from "./pages/Portfolio";
 import Footer from "./pages/Footer"
+import PortfolioDetails from "./pages/PortfolioDetails";
 
 function App() {
   return (
     <>
 
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/service/:id" element={<ServiceDetails />} />
-        <Route path="/about" element={<About/>}/>
-        <Route path="/portfolio" element={<Portfolio/>}/>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/service/:id" element={<ServiceDetails />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/portfolio" element={<Portfolio />} />
+          <Route path="/portfolio-details/:id" element={<PortfolioDetails />} />
 
 
 
-        
-      </Routes>
-    </BrowserRouter>
 
-            <Footer />
+        </Routes>
+      </BrowserRouter>
+
+      <Footer />
 
     </>
   );

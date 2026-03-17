@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 import axios from "axios";
 import "../Style.css";
 
@@ -13,6 +15,7 @@ const Portfolio = () => {
             .catch(err => console.log(err));
 
     }, []);
+    const navigate = useNavigate();
 
     return (
         <>
@@ -48,9 +51,12 @@ const Portfolio = () => {
                                         <h5>{item.title}</h5>
                                     </div>
 
-                                    <button className="arrow-btn">
-                                        <i className="fa-solid fa-arrow-right"></i>
-                                    </button>
+                                    <button 
+  className="arrow-btn"
+  onClick={() => navigate(`/portfolio-details/${item._id}`)}
+>
+  <i className="fa-solid fa-arrow-right"></i>
+</button>
                                 </div>
 
                             </div>

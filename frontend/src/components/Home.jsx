@@ -74,33 +74,38 @@ const Home = () => {
 
   const handleLogin = async () => {
 
+  if (!email || !password) {
+    alert("Please enter email and password");
+    return;
+  }
+
+  try {
     const res = await fetch("http://localhost:5000/api/auth/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
       },
-      body: JSON.stringify({
-        email,
-        password
-      })
+      body: JSON.stringify({ email, password })
     });
 
     const data = await res.json();
 
-    if (data.token) {
-
+    if (res.ok) {
       localStorage.setItem("token", data.token);
       localStorage.setItem("name", data.name);
       localStorage.setItem("email", data.email);
 
       setUser(data);
       setShowLogin(false);
-
     } else {
-      alert("Login Failed");
+      alert(data.message || "Login Failed");
     }
 
-  };
+  } catch (error) {
+    console.log(error);
+    alert("Server Error");
+  }
+};
 
   const handleRegister = async () => {
 
@@ -373,7 +378,9 @@ const Home = () => {
                       {portfolioDropdown && (
                         <div className="sub-menu">
                           <a style={{ color: '#ff2e63' }} onClick={handlePortfolioClick}>Our Portfolio</a>
-                          <a href="#">Portfolio Details</a>
+                          <a onClick={() => navigate(`/portfolio-details/${someId}`)}>
+  Portfolio Details
+</a>
                         </div>
                       )}
                     </div>

@@ -10,6 +10,8 @@ const serviceRoutes = require("./routes/serviceRoutes");
 const aboutRoutes = require("./routes/aboutRoutes");
 const portfolioRoutes = require("./routes/portfolioRoutes");
 
+const portfolioDetailsRoutes = require("./routes/portfolioDetailsRoutes");
+
 const app = express();
 
 app.use(cors());
@@ -36,6 +38,8 @@ app.use("/api", contactRoutes);
 app.use("/api/services", serviceRoutes);
 app.use("/api", aboutRoutes);
 app.use("/api", portfolioRoutes);
+
+app.use("/api/portfolio-details", require("./routes/portfolioDetailsRoutes"));
 
 app.listen(5000, () => {
   console.log("Server running on port 5000");
