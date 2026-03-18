@@ -342,8 +342,8 @@ const Home = () => {
 
                 {servicesDropdown && (
                   <div className="dropdown-menu-custom">
-                    <a href="#">Services</a>
-                    <Link to={`/service/${firstService}`}>
+<Link to="/onlyservices">Services</Link>                    
+<Link to={`/service/${firstService}`}>
                       Service Details
                     </Link>
                   </div>
@@ -361,7 +361,7 @@ const Home = () => {
 
                 {pagesDropdown && (
                   <div className="dropdown-menu-custom">
-                    <a href="#">About Us</a>
+                    <a href="#" onClick={handleAboutClick}>About Us</a>
                     <a href="#">Pricing Plan</a>
                     <a href="#">FAQs</a>
                     <a href="#">Testimonials</a>
