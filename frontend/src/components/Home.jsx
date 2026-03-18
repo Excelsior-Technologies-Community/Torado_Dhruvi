@@ -12,7 +12,10 @@ import img3 from "../assets/trending3.jpg";
 
 import aboutimg from "../assets/about1.png";
 
+import ToradoProvideSection from "./ToradoProvideSection";
+import AboutHome from "./AboutHome";
 
+import manImg from "../assets/registerman.png";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay } from "swiper/modules";
 
@@ -44,6 +47,11 @@ const Home = () => {
 
   const [firstService, setFirstService] = useState(null);
 
+  const [quoteName, setQuoteName] = useState("");
+  const [quoteEmail, setQuoteEmail] = useState("");
+  const [quotePhone, setQuotePhone] = useState("");
+  const [quoteMessage, setQuoteMessage] = useState("");
+
   useEffect(() => {
 
     const name = localStorage.getItem("name");
@@ -74,38 +82,38 @@ const Home = () => {
 
   const handleLogin = async () => {
 
-  if (!email || !password) {
-    alert("Please enter email and password");
-    return;
-  }
-
-  try {
-    const res = await fetch("http://localhost:5000/api/auth/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({ email, password })
-    });
-
-    const data = await res.json();
-
-    if (res.ok) {
-      localStorage.setItem("token", data.token);
-      localStorage.setItem("name", data.name);
-      localStorage.setItem("email", data.email);
-
-      setUser(data);
-      setShowLogin(false);
-    } else {
-      alert(data.message || "Login Failed");
+    if (!email || !password) {
+      alert("Please enter email and password");
+      return;
     }
 
-  } catch (error) {
-    console.log(error);
-    alert("Server Error");
-  }
-};
+    try {
+      const res = await fetch("http://localhost:5000/api/auth/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ email, password })
+      });
+
+      const data = await res.json();
+
+      if (res.ok) {
+        localStorage.setItem("token", data.token);
+        localStorage.setItem("name", data.name);
+        localStorage.setItem("email", data.email);
+
+        setUser(data);
+        setShowLogin(false);
+      } else {
+        alert(data.message || "Login Failed");
+      }
+
+    } catch (error) {
+      console.log(error);
+      alert("Server Error");
+    }
+  };
 
   const handleRegister = async () => {
 
@@ -228,6 +236,60 @@ const Home = () => {
   };
 
 
+  const handleQuoteSubmit = async () => {
+
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+      alert("Please login first & then try again");
+      return;
+    }
+
+    try {
+
+      const res = await fetch("http://localhost:5000/api/quote", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`
+        },
+        body: JSON.stringify({
+          name: quoteName,
+          email: quoteEmail,
+          phone: quotePhone,
+          message: quoteMessage
+        })
+      });
+
+      if (!res.ok) {
+        if (res.status === 401) {
+          alert("Session expired or invalid token. Please log out and log in again.");
+          return;
+        }
+        const text = await res.text();
+        console.log("ERROR RESPONSE:", text);
+        alert("API Error — check console");
+        return;
+      }
+
+      const data = await res.json();
+
+      if (data.success) {
+        alert("Request submitted successfully ");
+
+        setQuoteName("");
+        setQuoteEmail("");
+        setQuotePhone("");
+        setQuoteMessage("");
+      }
+
+    } catch (err) {
+      console.log(err);
+    }
+
+  };
+
+
 
 
   return (
@@ -342,8 +404,8 @@ const Home = () => {
 
                 {servicesDropdown && (
                   <div className="dropdown-menu-custom">
-<Link to="/onlyservices">Services</Link>                    
-<Link to={`/service/${firstService}`}>
+                    <Link to="/onlyservices">Services</Link>
+                    <Link to={`/service/${firstService}`}>
                       Service Details
                     </Link>
                   </div>
@@ -379,8 +441,8 @@ const Home = () => {
                         <div className="sub-menu">
                           <a style={{ color: '#ff2e63' }} onClick={handlePortfolioClick}>Our Portfolio</a>
                           <a onClick={() => navigate(`/portfolio-details/${someId}`)}>
-              Portfolio Details
-</a>
+                            Portfolio Details
+                          </a>
                         </div>
                       )}
                     </div>
@@ -695,6 +757,86 @@ const Home = () => {
         </div>
 
       )}
+
+      <ToradoProvideSection />
+
+      <div className="quote-section container">
+
+        <div className="row align-items-center">
+
+          <div className="col-lg-6 quote-left">
+
+            <p className="quote-subtitle">TRY OUR SERVICE</p>
+
+            <h1>Get Free Quote</h1>
+
+            <p className="quote-desc">
+              Pellentesque at posuere tellus. Ut sed dui justo hasellus scelerisque turpis arcu ut.
+            </p>
+
+            <div className="quote-contact">
+              <i className="fa-solid fa-phone"></i>
+              <div>
+                <p>Contact Us</p>
+                <h5>(+212)-226-3126</h5>
+              </div>
+            </div>
+
+            <img
+              src={manImg}
+              alt=""
+              className="quote-man"
+            />
+
+          </div>
+
+          <div className="col-lg-6 quote-right">
+
+            <div className="torado-quote-form">
+
+              <input
+                type="text"
+                placeholder="Your Name"
+                value={quoteName}
+                onChange={(e) => setQuoteName(e.target.value)}
+              />
+
+              <input
+                type="email"
+                placeholder="Email Address"
+                value={quoteEmail}
+                onChange={(e) => setQuoteEmail(e.target.value)}
+              />
+
+              <input
+                type="text"
+                placeholder="Phone"
+                value={quotePhone}
+                onChange={(e) => setQuotePhone(e.target.value)}
+              />
+
+              <textarea
+                placeholder="Message"
+                value={quoteMessage}
+                onChange={(e) => setQuoteMessage(e.target.value)}
+              />
+
+              <button
+                className="torado-quote-btn"
+                onClick={handleQuoteSubmit}
+              >
+                REQUEST ESTIMATE
+              </button>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <AboutHome />
 
     </>
   );

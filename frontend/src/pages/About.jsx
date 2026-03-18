@@ -259,7 +259,7 @@ function About() {
                                 <div className="port11-line"></div>
                             </div>
 
-                            <h2>Success Work Sotries</h2>
+                            <h2>Success Work Stories</h2>
 
                         </div>
 

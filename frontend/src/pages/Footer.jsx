@@ -6,7 +6,7 @@ import post2 from "../assets/footer2.png";
 
 const Footer = () => {
   return (
-    <footer className="torado-footer-section">
+    <footer className="torado-footer-section mt-5">
       <div className="container">
 
         <div className="row torado-footer-top">

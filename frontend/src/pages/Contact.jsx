@@ -24,8 +24,8 @@ const Contact = () => {
     const [showProfileMenu, setShowProfileMenu] = useState(false);
 
     const [subject, setSubject] = useState("");
-const [phone, setPhone] = useState("");
-const [message, setMessage] = useState("");
+    const [phone, setPhone] = useState("");
+    const [message, setMessage] = useState("");
 
     useEffect(() => {
 
@@ -101,51 +101,51 @@ const [message, setMessage] = useState("");
 
     const handleContactSubmit = async () => {
 
-  const token = localStorage.getItem("token");
+        const token = localStorage.getItem("token");
 
-  if (!token) {
-    alert("Please login to send message");
-    return;
-  }
+        if (!token) {
+            alert("Please login to send message");
+            return;
+        }
 
-  const res = await fetch("http://localhost:5000/api/contact", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`
-    },
-    body: JSON.stringify({
-      name,
-      email,
-      subject,
-      phone,
-      message
-    })
-  });
+        const res = await fetch("http://localhost:5000/api/contact", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`
+            },
+            body: JSON.stringify({
+                name,
+                email,
+                subject,
+                phone,
+                message
+            })
+        });
 
-  const data = await res.json();
+        const data = await res.json();
 
-  if (res.status === 401 || res.status === 400) {
-    alert("Session expired or invalid. Please login again.");
-    localStorage.removeItem("token");
-    localStorage.removeItem("name");
-    localStorage.removeItem("email");
-    setUser(null);
-    return;
-  }
+        if (res.status === 401 || res.status === 400) {
+            alert("Session expired or invalid. Please login again.");
+            localStorage.removeItem("token");
+            localStorage.removeItem("name");
+            localStorage.removeItem("email");
+            setUser(null);
+            return;
+        }
 
-  if (data.success) {
-    alert("Message sent successfully");
+        if (data.success) {
+            alert("Message sent successfully");
 
-    setSubject("");
-    setPhone("");
-    setMessage("");
+            setSubject("");
+            setPhone("");
+            setMessage("");
 
-  } else {
-    alert(data.message || "Something went wrong");
-  }
+        } else {
+            alert(data.message || "Something went wrong");
+        }
 
-};
+    };
 
 
 
@@ -282,7 +282,7 @@ const [message, setMessage] = useState("");
                                         <a href="#">FAQs</a>
                                         <a href="#">Testimonials</a>
                                         <div className="dropdown-submenu">
-                                            <div 
+                                            <div
                                                 className="dropdown-submenu-btn"
                                                 onClick={(e) => { e.stopPropagation(); setPortfolioDropdown(!portfolioDropdown); }}
                                             >
@@ -463,82 +463,82 @@ const [message, setMessage] = useState("");
 
             <div className="container torado-contact-form-section">
 
-  <div className="row">
+                <div className="row">
 
-    <div className="col-md-6 mb-4">
+                    <div className="col-md-6 mb-4">
 
-      <input
-        type="text"
-        placeholder="Your Name"
-        className="torado-input"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-      />
+                        <input
+                            type="text"
+                            placeholder="Your Name"
+                            className="torado-input"
+                            value={name}
+                            onChange={(e) => setName(e.target.value)}
+                        />
 
-    </div>
+                    </div>
 
-    <div className="col-md-6 mb-4">
+                    <div className="col-md-6 mb-4">
 
-      <input
-        type="email"
-        placeholder="Your Email Address"
-        className="torado-input"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-      />
+                        <input
+                            type="email"
+                            placeholder="Your Email Address"
+                            className="torado-input"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                        />
 
-    </div>
+                    </div>
 
-    <div className="col-md-6 mb-4">
+                    <div className="col-md-6 mb-4">
 
-      <input
-        type="text"
-        placeholder="Your Subject"
-        className="torado-input"
-        value={subject}
-        onChange={(e) => setSubject(e.target.value)}
-      />
+                        <input
+                            type="text"
+                            placeholder="Your Subject"
+                            className="torado-input"
+                            value={subject}
+                            onChange={(e) => setSubject(e.target.value)}
+                        />
 
-    </div>
+                    </div>
 
-    <div className="col-md-6 mb-4">
+                    <div className="col-md-6 mb-4">
 
-      <input
-        type="text"
-        placeholder="Your Phone Number"
-        className="torado-input"
-        value={phone}
-        onChange={(e) => setPhone(e.target.value)}
-      />
+                        <input
+                            type="text"
+                            placeholder="Your Phone Number"
+                            className="torado-input"
+                            value={phone}
+                            onChange={(e) => setPhone(e.target.value)}
+                        />
 
-    </div>
+                    </div>
 
-    <div className="col-md-12 mb-4">
+                    <div className="col-md-12 mb-4">
 
-      <textarea
-        placeholder="Enter Your Message"
-        className="torado-textarea"
-        rows="6"
-        value={message}
-        onChange={(e) => setMessage(e.target.value)}
-      ></textarea>
+                        <textarea
+                            placeholder="Enter Your Message"
+                            className="torado-textarea"
+                            rows="6"
+                            value={message}
+                            onChange={(e) => setMessage(e.target.value)}
+                        ></textarea>
 
-    </div>
+                    </div>
 
-    <div className="col-md-12 text-center">
+                    <div className="col-md-12 text-center">
 
-      <button
-        className="torado-send-btn"
-        onClick={handleContactSubmit}
-      >
-        SEND MESSAGE
-      </button>
+                        <button
+                            className="torado-send-btn"
+                            onClick={handleContactSubmit}
+                        >
+                            SEND MESSAGE
+                        </button>
 
-    </div>
+                    </div>
 
-  </div>
+                </div>
 
-</div>
+            </div>
 
             {showLogin && (
 
