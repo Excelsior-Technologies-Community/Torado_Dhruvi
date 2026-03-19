@@ -1,4 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState} from "react";
+import { useNavigate } from "react-router-dom";
+
 import axios from "axios";
 import "../Style.css";
 
@@ -9,6 +11,7 @@ import blog3 from "../assets/n3.jpg";
 const BlogNews = () => {
 
   const [data, setData] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     axios.get("http://localhost:5000/api/blognews")
@@ -50,9 +53,12 @@ const BlogNews = () => {
                 <p className="category">{item.category}</p>
                 <h5>{item.title}</h5>
 
-                <button className="read-btn">
-                  Read More <i className="fa fa-arrow-right"></i>
-                </button>
+                <button 
+    className="read-btn"
+    onClick={() => navigate(`/blogdetails/${item._id}`)}
+  >
+    Read More <i className="fa fa-arrow-right"></i>
+  </button>
               </div>
 
             </div>
