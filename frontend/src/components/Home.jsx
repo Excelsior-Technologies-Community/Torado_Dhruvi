@@ -24,6 +24,8 @@ import services2 from "../assets/service2.jpg";
 import services3 from "../assets/service3.jpg";
 import services4 from "../assets/service4.jpg";
 import services5 from "../assets/service1.jpg";
+import AboutTestimonials from "../components/AboutTestimonials";
+import BlogNews from "./BlogNews";
 
 const Home = () => {
 
@@ -550,7 +552,6 @@ const Home = () => {
               </p>
 
               <button className="hero-btn" onClick={handleHelpClick}>
-                <i className="fa-solid fa-circle-question me-2"></i>
                 HOW CAN WE HELP
               </button>
 
@@ -837,6 +838,90 @@ const Home = () => {
       </div>
 
       <AboutHome />
+
+      <div className="process-section text-center">
+
+        <p className="process-subtitle">PROCESS</p>
+        <h2>We Follow Some Easy Steps To Developed Projects</h2>
+
+        <div className="row mt-5">
+
+          <div className="col-md-4">
+            <div className="process-box">
+              <div className="process-icon">
+                <i className="fa-solid fa-headset"></i>
+              </div>
+              <h5>Our Consultation</h5>
+              <p>Praesent sed erat cursus leifend mi vitae lacinia.</p>
+            </div>
+          </div>
+
+          <div className="col-md-4">
+            <div className="process-box">
+              <div className="process-icon">
+                <i className="fa-solid fa-diagram-project"></i>
+              </div>
+              <h5>Perfect Solutions</h5>
+              <p>Praesent sed erat cursus leifend mi vitae lacinia.</p>
+            </div>
+          </div>
+
+          <div className="col-md-4">
+            <div className="process-box">
+              <div className="process-icon">
+                <i className="fa-solid fa-chart-line"></i>
+              </div>
+              <h5>Business Growth</h5>
+              <p>Praesent sed erat cursus leifend mi vitae lacinia.</p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+      <div className="container-fluid">
+
+        <div className="wm-stats">
+
+          <div className="row text-center">
+
+            <div className="col-lg col-md-4 col-6">
+              <h3>10k</h3>
+              <p>Global Customers</p>
+            </div>
+
+            <div className="col-lg col-md-4 col-6">
+              <h3>5k+</h3>
+              <p>Global Customers</p>
+            </div>
+
+            <div className="col-lg col-md-4 col-6">
+              <h3>96+</h3>
+              <p>Global Customers</p>
+            </div>
+
+            <div className="col-lg col-md-6 col-6">
+              <h3>370</h3>
+              <p>Global Customers</p>
+            </div>
+
+            <div className="col-lg col-md-6 col-6">
+              <h3>75+</h3>
+              <p>Global Customers</p>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <AboutTestimonials />
+            <BlogNews />
+
+
+      
 
     </>
   );

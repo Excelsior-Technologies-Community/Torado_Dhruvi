@@ -10,6 +10,9 @@ import img2 from "../assets/p2.jpg";
 import img3 from "../assets/p3.jpg";
 import img4 from "../assets/p4.jpg";
 
+import AboutTestimonials from "../components/AboutTestimonials";
+
+
 function About() {
 
     const [about, setAbout] = useState({});
@@ -67,19 +70,6 @@ function About() {
         { img: img4, title: "Market Strategy", cat: "Business & Finance" }
     ];
 
-    const nextTestimonial = () => {
-        if (!about.testimonials) return;
-
-        if (testimonialIndex < about.testimonials.length - 2) {
-            setTestimonialIndex(testimonialIndex + 1);
-        }
-    };
-
-    const prevTestimonial = () => {
-        if (testimonialIndex > 0) {
-            setTestimonialIndex(testimonialIndex - 1);
-        }
-    };
 
     return (
         <>
@@ -399,73 +389,8 @@ function About() {
 
             </section>
 
-            <section className="testimonial-section">
+            <AboutTestimonials />
 
-                <div className="container">
-
-                    <div className="testimonial-header">
-
-                        <p className="testimonial-subtitle">TESTIMONIAL</p>
-
-                        <h2 className="testimonial-title">
-                            What User Say About <br /> Our Torado
-                        </h2>
-
-                        <div className="testimonial-nav">
-                            <button onClick={prevTestimonial}>
-                                <i className="fa-solid fa-arrow-left"></i>
-                            </button>
-                            <button onClick={nextTestimonial}>
-                                <i className="fa-solid fa-arrow-right"></i>
-                            </button>
-                        </div>
-
-                    </div>
-
-                    <div className="testimonial-slider">
-
-                        <div
-                            className="testimonial-track"
-                            style={{
-                                transform: `translateX(-${testimonialIndex * 50}%)`
-                            }}
-                        >
-
-                            {about.testimonials?.map((item, index) => (
-
-                                <div className="testimonial-card" key={index}>
-
-                                    <div className="testimonial-top">
-
-                                        <img src={item.image} alt="" />
-                                        <div>
-                                            <h5>{item.name}</h5>
-                                            <p>{item.role}</p>
-                                        </div>
-
-                                    </div>
-
-                                    <p className="testimonial-text">
-                                        {item.message}
-                                    </p>
-
-                                    <div className="testimonial-stars">
-                                        {[...Array(item.rating)].map((_, i) => (
-                                            <i key={i} className="fa-solid fa-star"></i>
-                                        ))}
-                                    </div>
-
-                                </div>
-
-                            ))}
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </section>
 
             <section className="team-section">
 

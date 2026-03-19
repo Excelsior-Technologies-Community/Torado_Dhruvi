@@ -61,3 +61,14 @@ http://localhost:5000/api/onlyservices/ -- GET
   "description": "Pellentesque at posuere tellus sed dui justo scelerisque turpis arcu ut pulvinar lectus tristi que non ptoy laoreet risus vel.",
   "image": "https://images.unsplash.com/photo-1556761175-b413da4baf72"
 }
+
+
+http://localhost:5000/api/blognews --- POST / GET
+
+{
+  "title": "Popular Consultants are Big Meetup 2025",
+  "category": "BUSINESS",
+  "description": "Read more",
+  "date": "19 Jul 2025",
+  "image": "n3.jpg"
+}

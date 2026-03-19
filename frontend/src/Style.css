@@ -2116,3 +2116,73 @@ margin-top:15px;
 .torado-quote-btn:hover {
   background: #ff1e4d;
 }
+.blog-section {
+  padding: 60px 0;
+}
+
+.blog-card {
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: 0.4s;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* 🔥 HOVER EFFECT */
+.blog-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+.blog-img {
+  position: relative;
+}
+
+.blog-img img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+}
+
+/* Date Box */
+.date-box {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  background: #ff004f;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  border-radius: 5px;
+}
+
+.blog-content {
+  padding: 20px;
+}
+
+.category {
+  color: #ff004f;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.read-btn {
+  margin-top: 10px;
+  padding: 8px 15px;
+  border: 1px solid #ff004f;
+  background: transparent;
+  color: #ff004f;
+  transition: 0.3s;
+}
+
+.read-btn:hover {
+  background: #ff004f;
+  color: white;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .blog-img img {
+    height: 200px;
+  }
+}

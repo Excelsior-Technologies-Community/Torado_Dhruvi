@@ -1,57 +1,63 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
-import "../Style1.css";
 
-export default function AboutHome(){
-        const [about, setAbout] = useState({});
-    
-    return(
-        <>
-            <section className="team-section">
+function AboutTeam() {
 
-                <div className="container-fluid">
+    const [team, setTeam] = useState([]);
 
-                    <p className="team-subtitle">OUR TEAM</p>
+    useEffect(() => {
+        axios.get("http://localhost:5000/api/about")
+            .then(res => {
+                if (res.data && res.data.team) {
+                    setTeam(res.data.team);
+                }
+            })
+            .catch(err => console.log(err));
+    }, []);
 
-                    <h2 className="team-title">Meet Our Team Member</h2>
+    return (
+        <section className="team-section">
 
-                    <div className="row">
+            <div className="container-fluid">
 
-                        {about.team?.map((member, index) => (
+                <p className="team-subtitle">OUR TEAM</p>
 
-                            <div className="col-lg-3 col-md-6 col-12 mb-4" key={index}>
+                <h2 className="team-title">Meet Our Team Member</h2>
 
-                                <div className="team-card">
+                <div className="row">
 
-                                    <div className="team-img">
-                                        <img src={member.image} alt="" />
-                                    </div>
+                    {team.map((member, index) => (
 
-                                    <div className="team-content">
+                        <div className="col-lg-3 col-md-6 col-12 mb-4" key={index}>
 
-                                        <h5>{member.name}</h5>
-                                        <p>{member.role}</p>
+                            <div className="team-card">
 
-                                        <div className="team-social">
+                                <div className="team-img">
+                                    <img src={member.image} alt="" />
+                                </div>
 
-                                            <a href={member.facebook}>
-                                                <i className="fa-brands fa-facebook-f"></i>
-                                            </a>
+                                <div className="team-content">
 
-                                            <a href={member.twitter}>
-                                                <i className="fa-brands fa-twitter"></i>
-                                            </a>
+                                    <h5>{member.name}</h5>
+                                    <p>{member.role}</p>
 
-                                            <a href={member.instagram}>
-                                                <i className="fa-brands fa-instagram"></i>
-                                            </a>
+                                    <div className="team-social">
 
-                                            <a href={member.linkedin}>
-                                                <i className="fa-brands fa-linkedin-in"></i>
-                                            </a>
+                                        <a href={member.facebook}>
+                                            <i className="fa-brands fa-facebook-f"></i>
+                                        </a>
 
-                                        </div>
+                                        <a href={member.twitter}>
+                                            <i className="fa-brands fa-twitter"></i>
+                                        </a>
+
+                                        <a href={member.instagram}>
+                                            <i className="fa-brands fa-instagram"></i>
+                                        </a>
+
+                                        <a href={member.linkedin}>
+                                            <i className="fa-brands fa-linkedin-in"></i>
+                                        </a>
 
                                     </div>
 
@@ -59,20 +65,16 @@ export default function AboutHome(){
 
                             </div>
 
-                        ))}
+                        </div>
 
-                    </div>
-
-                    <p className="team-bottom-text">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        <span> View All Team Member →</span>
-                    </p>
+                    ))}
 
                 </div>
 
-            </section>
+            </div>
 
-        </>
-    )
+        </section>
+    );
 }
 
+export default AboutTeam;
