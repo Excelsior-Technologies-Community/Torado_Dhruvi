@@ -8,6 +8,8 @@ import Footer from "./pages/Footer"
 import PortfolioDetails from "./pages/PortfolioDetails";
 import OnlyServices from "./pages/onlyServices";
 import BlogDetails from "./pages/BlogDetails";
+import Pricing from "./pages/Pricing";
+import FAQ from "./pages/FAQ";
 
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
@@ -26,6 +28,10 @@ function App() {
           <Route path="/portfolio-details/:id" element={<PortfolioDetails />} />
           <Route path="/onlyservices" element={<OnlyServices />} />
           <Route path="/blogdetails/:id" element={<BlogDetails />} />
+          <Route path="/pricing" element={<Pricing />} />
+                  <Route path="/faq" element={<FAQ />} />
+
+
 
 
 

@@ -72,3 +72,24 @@ http://localhost:5000/api/blognews --- POST / GET
   "date": "19 Jul 2025",
   "image": "n3.jpg"
 }
+
+http://localhost:5000/api/comments -- GET
+
+http://localhost:5000/api/pricing -- GET (POST Not needed) 
+
+{
+  "_id": {
+    "$oid": "69bce4610aab40083789d773"
+  },
+  "title": "Super Plan",
+  "price": 349,
+  "duration": "monthly",
+  "features": [
+    "All Financial Tasks",
+    "Economic Market Survey",
+    "Sales Operations",
+    "Auto Intelligence",
+    "24/7 Support",
+    "Technology Services"
+  ]
+}

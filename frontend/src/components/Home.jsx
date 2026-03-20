@@ -48,6 +48,7 @@ const Home = () => {
   const [showProfileMenu, setShowProfileMenu] = useState(false);
 
   const [firstService, setFirstService] = useState(null);
+  const [firstBlog, setFirstBlog] = useState("69bb93105d9a567be6623e11");
 
   const [quoteName, setQuoteName] = useState("");
   const [quoteEmail, setQuoteEmail] = useState("");
@@ -206,14 +207,19 @@ const Home = () => {
 
     axios.get("http://localhost:5000/api/services")
       .then(res => {
-
         setServicesData(res.data);
-
         if (res.data.length > 0) {
           setFirstService(res.data[0]._id);
         }
-
       });
+
+    axios.get("http://localhost:5000/api/blognews")
+      .then(res => {
+        if (res.data.length > 0) {
+          setFirstBlog(res.data[0]._id);
+        }
+      })
+      .catch(err => console.log(err));
 
   }, []);
 
@@ -362,7 +368,6 @@ const Home = () => {
 
           <a className="navbar-brand logo" href="#">
             <img src={logo} alt="Logo" />
-
           </a>
 
           <button
@@ -426,8 +431,10 @@ const Home = () => {
                 {pagesDropdown && (
                   <div className="dropdown-menu-custom">
                     <a href="#" onClick={handleAboutClick}>About Us</a>
-                    <a href="#">Pricing Plan</a>
-                    <a href="#">FAQs</a>
+                    <Link to="/pricing">Pricing Plan</Link>
+                    <Link to="/faq" className="nav-link">
+                      FAQs
+                    </Link>
                     <a href="#">Testimonials</a>
 
                     <div className="dropdown-submenu">
@@ -485,7 +492,7 @@ const Home = () => {
                 {blogDropdown && (
                   <div className="dropdown-menu-custom">
                     <a href="#">Blog Grid</a>
-                    <a href="#">Blog Details</a>
+                    <Link to={`/blogdetails/${firstBlog || '69bb93105d9a567be6623e11'}`}>Blog Details</Link>
                   </div>
                 )}
               </li>
@@ -918,10 +925,10 @@ const Home = () => {
       </div>
 
       <AboutTestimonials />
-            <BlogNews />
+      <BlogNews />
 
 
-      
+
 
     </>
   );

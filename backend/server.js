@@ -15,6 +15,8 @@ const onlyservicesRoutes = require("./routes/onlyservicesRoutes");
 const quoteRoutes = require("./routes/onlyservicesQuoteRoutes");
 const blognewsRoutes = require("./routes/blognewsRoutes");
 const blogdetailsRoutes = require("./routes/blogdetailsRoutes");
+const commentRoutes = require("./routes/commentRoutes");
+const faqRoutes = require("./routes/faq");
 
 
 const app = express();
@@ -49,6 +51,9 @@ app.use("/api/onlyservices", onlyservicesRoutes);
 app.use("/api/quote", quoteRoutes);
 app.use("/api/blognews", blognewsRoutes);
 app.use("/api/blogdetails", blogdetailsRoutes);
+app.use("/api/comments", commentRoutes);
+app.use("/api/pricing", require("./routes/pricingRoutes"));
+app.use("/api/faqs", faqRoutes);
 app.listen(5000, () => {
   console.log("Server running on port 5000");
 });
