@@ -115,3 +115,7 @@ http://localhost:5000/api/privacy   -- POST
 }
 
 http://localhost:5000/api/privacy   -- GET
+
+http://localhost:5000/api/team/69c36b8e0120bd33f357becd   -- GET 
+
+http://localhost:5000/api/teamForm  -- GET

@@ -62,6 +62,7 @@ app.use("/api/testimonials", testimonialRoutes);
 app.use("/api", privacyRoutes);
 app.use("/api/team", teamRoutes);
 app.use("/api/teamForm", teamFormRoutes);
+app.use("/api/admin", require("./routes/adminRoutes"));
 app.listen(5000, () => {
   console.log("Server running on port 5000");
 });

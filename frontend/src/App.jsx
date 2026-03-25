@@ -1,5 +1,12 @@
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate, useLocation } from "react-router-dom";
 import Home from "./components/Home";
+
+function ConditionalFooter() {
+  const location = useLocation();
+  const hideFooterRoutes = ["/admin", "/admin-login"];
+  if (hideFooterRoutes.includes(location.pathname)) return null;
+  return <Footer />;
+}
 import Contact from "./pages/Contact";
 import ServiceDetails from "./pages/ServiceDetails";
 import About from "./pages/About";
@@ -13,6 +20,8 @@ import FAQ from "./pages/FAQ";
 import Testimonials from "./pages/Testimonials";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TeamDetails from "./pages/TeamDetails";
+import AdminLogin from "./pages/AdminLogin";
+import AdminDashboard from "./pages/AdminDashboard";
 
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
@@ -38,13 +47,13 @@ function App() {
           <Route path="/team-details" element={<Navigate to="/" replace />} />
           <Route path="/team-details/:id" element={<TeamDetails />} />
           <Route path="/team-details/*" element={<Navigate to="/" replace />} />
+          <Route path="/admin-login" element={<AdminLogin />} />
+          <Route path="/admin" element={<AdminDashboard />} />
 
 
         </Routes>
+        <ConditionalFooter />
       </BrowserRouter>
-
-      <Footer />
-
     </>
   );
 }
