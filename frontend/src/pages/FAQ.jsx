@@ -50,7 +50,7 @@ export default function FAQ() {
 
         try {
 
-            const res = await fetch("http://localhost:5000/api/faq/submit", {
+            const res = await fetch("http://localhost:5000/api/faqs/submit", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -66,17 +66,26 @@ export default function FAQ() {
 
             const data = await res.json();
 
-            if (data.success) {
+            if (res.status === 401) {
+                alert("Your session has expired or your token is invalid. Please log in again.");
+                localStorage.removeItem("token");
+                return;
+            }
+
+            if (res.ok && data.success) {
                 alert("Form submitted successfully");
 
                 setName("");
                 setPhone("");
                 setEmail("");
                 setMessage("");
+            } else {
+                alert(data.message || "Failed to submit form");
             }
 
         } catch (err) {
             console.log(err);
+            alert("Something went wrong. Check console for details.");
         }
     };
     

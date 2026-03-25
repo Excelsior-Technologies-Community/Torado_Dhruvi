@@ -17,6 +17,10 @@ const blognewsRoutes = require("./routes/blognewsRoutes");
 const blogdetailsRoutes = require("./routes/blogdetailsRoutes");
 const commentRoutes = require("./routes/commentRoutes");
 const faqRoutes = require("./routes/faq");
+const testimonialRoutes = require("./routes/testimonialRoutes");
+const privacyRoutes = require("./routes/privacyRoutes");
+const teamRoutes = require("./routes/teamRoutes");
+const teamFormRoutes = require("./routes/teamFormRoutes");
 
 
 const app = express();
@@ -54,6 +58,10 @@ app.use("/api/blogdetails", blogdetailsRoutes);
 app.use("/api/comments", commentRoutes);
 app.use("/api/pricing", require("./routes/pricingRoutes"));
 app.use("/api/faqs", faqRoutes);
+app.use("/api/testimonials", testimonialRoutes);
+app.use("/api", privacyRoutes);
+app.use("/api/team", teamRoutes);
+app.use("/api/teamForm", teamFormRoutes);
 app.listen(5000, () => {
   console.log("Server running on port 5000");
 });

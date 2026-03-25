@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Home from "./components/Home";
 import Contact from "./pages/Contact";
 import ServiceDetails from "./pages/ServiceDetails";
@@ -10,6 +10,9 @@ import OnlyServices from "./pages/onlyServices";
 import BlogDetails from "./pages/BlogDetails";
 import Pricing from "./pages/Pricing";
 import FAQ from "./pages/FAQ";
+import Testimonials from "./pages/Testimonials";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import TeamDetails from "./pages/TeamDetails";
 
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
@@ -29,11 +32,12 @@ function App() {
           <Route path="/onlyservices" element={<OnlyServices />} />
           <Route path="/blogdetails/:id" element={<BlogDetails />} />
           <Route path="/pricing" element={<Pricing />} />
-                  <Route path="/faq" element={<FAQ />} />
-
-
-
-
+          <Route path="/faq" element={<FAQ />} />
+          <Route path="/testimonials" element={<Testimonials />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+          <Route path="/team-details" element={<Navigate to="/" replace />} />
+          <Route path="/team-details/:id" element={<TeamDetails />} />
+          <Route path="/team-details/*" element={<Navigate to="/" replace />} />
 
 
         </Routes>

@@ -93,3 +93,25 @@ http://localhost:5000/api/pricing -- GET (POST Not needed)
     "Technology Services"
   ]
 }
+
+
+http://localhost:5000/api/testimonials/add  --- POST
+
+{
+  "name": "Michael Anderson",
+  "role": "Software Engineer",
+  "message": "Vivamus suscipit tortor eget felis porttitor volutpat. Mauris blandit aliquet elit.",
+  "rating": 5,
+  "image": "user1.png"
+} 
+
+http://localhost:5000/api/testimonials -- GET
+
+http://localhost:5000/api/privacy   -- POST
+
+{
+  "title": "Available tests",
+    "description": "Fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora. On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee the pain and trouble that are bound to ens"
+}
+
+http://localhost:5000/api/privacy   -- GET

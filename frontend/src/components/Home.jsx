@@ -49,6 +49,7 @@ const Home = () => {
 
   const [firstService, setFirstService] = useState(null);
   const [firstBlog, setFirstBlog] = useState("69bb93105d9a567be6623e11");
+  const [firstTeam, setFirstTeam] = useState("");
 
   const [quoteName, setQuoteName] = useState("");
   const [quoteEmail, setQuoteEmail] = useState("");
@@ -221,6 +222,14 @@ const Home = () => {
       })
       .catch(err => console.log(err));
 
+    axios.get("http://localhost:5000/api/team")
+      .then(res => {
+        if (res.data.length > 0) {
+          setFirstTeam(res.data[0]._id);
+        }
+      })
+      .catch(err => console.log(err));
+
   }, []);
 
   const handleAboutClick = async () => {
@@ -296,6 +305,8 @@ const Home = () => {
     }
 
   };
+
+  // team logic moved to useEffect
 
 
 
@@ -435,7 +446,9 @@ const Home = () => {
                     <Link to="/faq" className="nav-link">
                       FAQs
                     </Link>
-                    <a href="#">Testimonials</a>
+                    <li className="nav-item">
+                      <a href="/testimonials" className="nav-link">Testimonials</a>
+                    </li>
 
                     <div className="dropdown-submenu">
                       <div
@@ -456,7 +469,7 @@ const Home = () => {
                       )}
                     </div>
 
-                    <a href="#">Privacy & Policy</a>
+<Link to="/privacy-policy">Privacy & Policy</Link>
                     <a href="#">Terms & Conditions</a>
                     <a href="#">404 Error Page</a>
                   </div>
@@ -475,7 +488,9 @@ const Home = () => {
                 {teamDropdown && (
                   <div className="dropdown-menu-custom">
                     <a href="#">Our Team</a>
-                    <a href="#">Team Details</a>
+                    <Link to={`/team-details/${firstTeam}`}>
+                      Team Details
+                    </Link>                  
                   </div>
                 )}
               </li>

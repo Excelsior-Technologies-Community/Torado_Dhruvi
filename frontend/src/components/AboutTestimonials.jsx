@@ -68,7 +68,7 @@ function AboutTestimonials() {
 
                                 <div className="testimonial-top">
 
-                                    <img src={item.image} alt="" />
+                                    <img src={`http://localhost:5000/images/${item.image}`} alt="" />
 
                                     <div>
                                         <h5>{item.name}</h5>
