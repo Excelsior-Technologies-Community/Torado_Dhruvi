@@ -37,32 +37,40 @@ app.use(
 
 app.use("/api", helpRoutes);
 
-mongoose.connect("mongodb://127.0.0.1:27017/torado")
-.then(() => console.log("MongoDB Connected"))
-.catch((err) => console.log(err));
+const MONGODB_URI = process.env.MONGODB_URI || "mongodb://127.0.0.1:27017/torado";
 
+const startServer = async () => {
+  try {
+    await mongoose.connect(MONGODB_URI);
+    console.log("MongoDB Connected");
 
-app.use("/api/auth", authRoutes);
-app.use("/api", protectedRoutes);
+    app.use("/api/auth", authRoutes);
+    app.use("/api", protectedRoutes);
+    app.use("/api", contactRoutes);
+    app.use("/api/services", serviceRoutes);
+    app.use("/api", aboutRoutes);
+    app.use("/api", portfolioRoutes);
+    app.use("/api/portfolio-details", require("./routes/portfolioDetailsRoutes"));
+    app.use("/api/onlyservices", onlyservicesRoutes);
+    app.use("/api/quote", quoteRoutes);
+    app.use("/api/blognews", blognewsRoutes);
+    app.use("/api/blogdetails", blogdetailsRoutes);
+    app.use("/api/comments", commentRoutes);
+    app.use("/api/pricing", require("./routes/pricingRoutes"));
+    app.use("/api/faqs", faqRoutes);
+    app.use("/api/testimonials", testimonialRoutes);
+    app.use("/api", privacyRoutes);
+    app.use("/api/team", teamRoutes);
+    app.use("/api/teamForm", teamFormRoutes);
+    app.use("/api/admin", require("./routes/adminRoutes"));
 
-app.use("/api", contactRoutes);
-app.use("/api/services", serviceRoutes);
-app.use("/api", aboutRoutes);
-app.use("/api", portfolioRoutes);
+    app.listen(5000, () => {
+      console.log("Server running on port 5000");
+    });
+  } catch (err) {
+    console.error("Failed to connect to MongoDB:", err.message || err);
+    process.exit(1); 
+  }
+};
 
-app.use("/api/portfolio-details", require("./routes/portfolioDetailsRoutes"));
-app.use("/api/onlyservices", onlyservicesRoutes);
-app.use("/api/quote", quoteRoutes);
-app.use("/api/blognews", blognewsRoutes);
-app.use("/api/blogdetails", blogdetailsRoutes);
-app.use("/api/comments", commentRoutes);
-app.use("/api/pricing", require("./routes/pricingRoutes"));
-app.use("/api/faqs", faqRoutes);
-app.use("/api/testimonials", testimonialRoutes);
-app.use("/api", privacyRoutes);
-app.use("/api/team", teamRoutes);
-app.use("/api/teamForm", teamFormRoutes);
-app.use("/api/admin", require("./routes/adminRoutes"));
-app.listen(5000, () => {
-  console.log("Server running on port 5000");
-});
+startServer();

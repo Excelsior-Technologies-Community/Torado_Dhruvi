@@ -48,6 +48,7 @@ const Home = () => {
   const [showProfileMenu, setShowProfileMenu] = useState(false);
 
   const [firstService, setFirstService] = useState(null);
+  const [firstPortfolio, setFirstPortfolio] = useState("");
   const [firstBlog, setFirstBlog] = useState("69bb93105d9a567be6623e11");
   const [firstTeam, setFirstTeam] = useState("");
 
@@ -226,6 +227,14 @@ const Home = () => {
       .then(res => {
         if (res.data.length > 0) {
           setFirstTeam(res.data[0]._id);
+        }
+      })
+      .catch(err => console.log(err));
+
+    axios.get("http://localhost:5000/api/portfolio")
+      .then(res => {
+        if (res.data.length > 0) {
+          setFirstPortfolio(res.data[0]._id);
         }
       })
       .catch(err => console.log(err));
@@ -445,9 +454,9 @@ const Home = () => {
                     <Link to="/faq" className="nav-link">
                       FAQs
                     </Link>
-                    <li className="nav-item">
-                      <a href="/testimonials" className="nav-link">Testimonials</a>
-                    </li>
+                    <div className="nav-item">
+                      <Link to="/testimonials" className="nav-link">Testimonials</Link>
+                    </div>
 
                     <div className="dropdown-submenu">
                       <div
@@ -461,7 +470,15 @@ const Home = () => {
                       {portfolioDropdown && (
                         <div className="sub-menu">
                           <a style={{ color: '#ff2e63' }} onClick={handlePortfolioClick}>Our Portfolio</a>
-                          <a onClick={() => navigate(`/portfolio-details/${someId}`)}>
+                          <a
+                            onClick={() => {
+                              if (firstPortfolio) {
+                                navigate(`/portfolio-details/${firstPortfolio}`);
+                              } else {
+                                navigate('/portfolio');
+                              }
+                            }}
+                          >
                             Portfolio Details
                           </a>
                         </div>
@@ -512,7 +529,7 @@ const Home = () => {
               </li>
 
               <li className="nav-item">
-                <a className="nav-link">Contact</a>
+                <a className="nav-link" onClick={handleHelpClick}>Contact</a>
               </li>
 
             </ul>

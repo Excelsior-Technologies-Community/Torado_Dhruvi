@@ -19,7 +19,7 @@ const PortfolioDetails = () => {
             <div className="serviceDetails-hero">
                 <div className="container">
                     <p className="serviceDetails-breadcrumb">
-                        Home | Portfolio | <span>Portfolio Details</span>
+                        Home | <span>Portfolio Details</span>
                     </p>
                     <h1 className="serviceDetails-title">
                         Portfolio Details

@@ -38,6 +38,7 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/portfolio" element={<Portfolio />} />
           <Route path="/portfolio-details/:id" element={<PortfolioDetails />} />
+          <Route path="/portfolio-details/*" element={<Navigate to="/portfolio" replace />} />
           <Route path="/onlyservices" element={<OnlyServices />} />
           <Route path="/blogdetails/:id" element={<BlogDetails />} />
           <Route path="/pricing" element={<Pricing />} />
