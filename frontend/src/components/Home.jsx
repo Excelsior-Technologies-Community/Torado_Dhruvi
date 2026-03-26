@@ -306,7 +306,6 @@ const Home = () => {
 
   };
 
-  // team logic moved to useEffect
 
 
 
@@ -469,7 +468,7 @@ const Home = () => {
                       )}
                     </div>
 
-<Link to="/privacy-policy">Privacy & Policy</Link>
+                    <Link to="/privacy-policy">Privacy & Policy</Link>
                     <a href="#">Terms & Conditions</a>
                     <a href="#">404 Error Page</a>
                   </div>
@@ -490,7 +489,7 @@ const Home = () => {
                     <a href="#">Our Team</a>
                     <Link to={`/team-details/${firstTeam}`}>
                       Team Details
-                    </Link>                  
+                    </Link>
                   </div>
                 )}
               </li>
